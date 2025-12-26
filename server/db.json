@@ -1,0 +1,81 @@
+{
+  "contacts": [
+    {
+      "id": "1",
+      "name": "Rakesh Bandlapalli",
+      "contact": "9876543210",
+      "email": "rakesh.bandlapalli@gmail.com",
+      "state": "India"
+    },
+    {
+      "id": "2",
+      "name": "Ananya Sharma",
+      "contact": "9123456789",
+      "email": "ananya.sharma@gmail.com",
+      "state": "United States"
+    },
+    {
+      "id": "3",
+      "name": "Rahul Verma",
+      "contact": "9988776655",
+      "email": "rahul.verma@gmail.com",
+      "state": "Canada"
+    },
+    {
+      "id": "4",
+      "name": "Priya Iyer",
+      "contact": "9871234567",
+      "email": "priya.iyer@gmail.com",
+      "state": "Canada"
+    },
+    {
+      "id": "5",
+      "name": "Arjun Patel",
+      "contact": "9012345678",
+      "email": "arjun.patel@gmail.com",
+      "state": "India"
+    },
+    {
+      "id": "6",
+      "name": "Neha Singh",
+      "contact": "8899776655",
+      "email": "neha.singh@gmail.com",
+      "state": "Australia"
+    },
+    {
+      "id": "7",
+      "name": "Vikram Rao",
+      "contact": "9765432109",
+      "email": "vikram.rao@gmail.com",
+      "state": "Sri Lanka"
+    },
+    {
+      "id": "8",
+      "name": "Sneha Kulkarni",
+      "contact": "9345678901",
+      "email": "sneha.kulkarni@gmail.com",
+      "state": "Thailand"
+    },
+    {
+      "id": "9",
+      "name": "Amit Choudhary",
+      "contact": "9456781234",
+      "email": "amit.choudhary@gmail.com",
+      "state": "Sri Lanka"
+    },
+    {
+      "id": "10",
+      "name": "Kavya Nair",
+      "contact": "9087654321",
+      "email": "kavya.nair@gmail.com",
+      "state": "United States"
+    },
+    {
+      "id": "cac4",
+      "name": "",
+      "contact": "",
+      "email": "",
+      "state": ""
+    }
+  ]
+}
