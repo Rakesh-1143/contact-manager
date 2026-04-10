@@ -21,7 +21,7 @@ function Contacts() {
   }, []);
   useEffect(() => {
     const filtered = data.filter((obj) =>
-      obj.name.toLowerCase().includes(name.toLowerCase()),
+      (obj.name || "").toLowerCase().includes(name.toLowerCase()),
     );
     const timer = setTimeout(() => {
       setFilterData(filtered);
