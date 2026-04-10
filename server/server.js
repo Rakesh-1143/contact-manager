@@ -7,20 +7,23 @@ const app = express();
 const router = jsonServer.router(path.join(__dirname, 'db.json'));
 const middlewares = jsonServer.defaults();
 
-const PORT = process.env.PORT || 5000;
-
 app.use(cors());
-app.use(middlewares); // Use standard json-server middlewares
-app.use('/api', router); // Mount API on /api
+app.use(middlewares); // Standard json-server middlewares
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/dist')));
+// Rewriting /api to / so the router sees /contacts
+app.use(jsonServer.rewriter({
+  "/api/*": "/$1"
+}));
 
-// The "catchall" handler
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
+app.use(router); // Mount the router
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Local development only
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+// Export the app for Vercel
+module.exports = app;
