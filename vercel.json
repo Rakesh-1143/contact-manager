@@ -17,12 +17,12 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/client/dist/$1",
       "check": true
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/client/dist/index.html"
     }
   ]
