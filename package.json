@@ -1,0 +1,12 @@
+{
+  "name": "contact-manager",
+  "version": "1.0.0",
+  "scripts": {
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "build:client": "cd client && npm run build",
+    "start:server": "cd server && npm start",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "prod": "npm run build:client && npm run start:server"
+  }
+}

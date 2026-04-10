@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import { useParams, Link } from "react-router-dom";
 
 function ViewContact() {
@@ -7,7 +7,7 @@ function ViewContact() {
   const { id } = useParams();
 
   async function getData() {
-    const res = await axios(`http://localhost:5000/contacts/${id}`);
+    const res = await api.get(`/contacts/${id}`);
     setData(res.data);
   }
 

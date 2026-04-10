@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import { Link } from "react-router-dom";
 
 function Contacts() {
@@ -9,7 +9,7 @@ function Contacts() {
 
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/contacts");
+      const res = await api.get("/contacts");
       setData(res.data);
       setFilterData(res.data);
     } catch (error) {
@@ -21,11 +21,11 @@ function Contacts() {
   }, []);
   useEffect(() => {
     const filtered = data.filter((obj) =>
-      obj.name.toLowerCase().includes(name.toLowerCase())
+      obj.name.toLowerCase().includes(name.toLowerCase()),
     );
     const timer = setTimeout(() => {
       setFilterData(filtered);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timer);

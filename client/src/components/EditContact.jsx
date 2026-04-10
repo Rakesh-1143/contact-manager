@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../api/api";
 
 function EditContact() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function EditContact() {
   useEffect(() => {
     async function fetchContact() {
       try {
-        const res = await axios.get(`http://localhost:5000/contacts/${id}`);
+        const res = await api.get(`/contacts/${id}`);
         setObj(res.data);
       } catch (error) {
         console.error("Error fetching contact", error);
@@ -34,7 +34,7 @@ function EditContact() {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(obj);
-    await axios.put(`http://localhost:5000/contacts/${id}`, obj);
+    await api.put(`/contacts/${id}`, obj);
     setObj({
       name: "",
       contact: "",

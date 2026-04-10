@@ -11,7 +11,6 @@ function Navbar() {
               <i className="bi bi-telephone-fill fs-4"></i>
               <span>Contact Manager</span>
             </div>
-
           </div>
         </div>
       </div>
