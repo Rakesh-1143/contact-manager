@@ -1,31 +1,24 @@
 const express = require('express');
 const jsonServer = require('json-server');
-const path = require('path');
-const fs = require('fs');
 const cors = require('cors');
 
 const app = express();
 
-// Load db.json as an object to prevent json-server from trying to write to disk
-// (Vercel is read-only at runtime)
-const dbPath = path.join(process.cwd(), 'api', 'db.json');
-const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+// Load data directly via require to ensure it's bundled
+const dbData = require('./db.json');
 
 const router = jsonServer.router(dbData);
-const middlewares = jsonServer.defaults({
-  // Disable the logger in production to keep logs clean
-  logger: false
-});
+const middlewares = jsonServer.defaults();
 
 app.use(cors());
 app.use(middlewares);
 
-// Add a test route to verify the API is alive
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'API is running' });
+// Health check endpoint
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'API is working!', data_keys: Object.keys(dbData) });
 });
 
-// Explicitly handle the /api prefix
+// Explicit rewrite for Vercel: /api/contacts -> /contacts
 app.use(jsonServer.rewriter({
   "/api/*": "/$1"
 }));
