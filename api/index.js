@@ -1,17 +1,25 @@
+const express = require('express');
 const jsonServer = require('json-server');
-const server = jsonServer.create();
 const path = require('path');
+const cors = require('cors');
+
+const app = express();
 const router = jsonServer.router(path.join(__dirname, 'db.json'));
 const middlewares = jsonServer.defaults();
 
-server.use(middlewares);
+app.use(cors());
+app.use(middlewares);
 
-// Vercel routes /api/contacts to this file.
-// We want json-server to see /contacts.
-server.use(jsonServer.rewriter({
-  "/api/*": "/$1"
-}));
+// Explicitly handle the /api prefix before passing to the router
+app.use((req, res, next) => {
+  if (req.url.startsWith('/api')) {
+    req.url = req.url.replace(/^\/api/, '');
+  }
+  // If the URL is empty after replacement, default to /
+  if (req.url === '') req.url = '/';
+  next();
+});
 
-server.use(router);
+app.use(router);
 
-module.exports = server;
+module.exports = app;
