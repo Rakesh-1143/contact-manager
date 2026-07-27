@@ -83,3 +83,5 @@ function DeleteContact() {
     </div>
   );
 }
+
+export default DeleteContact;
