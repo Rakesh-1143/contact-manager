@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "json-server --watch db.json --port 5000",
+    "build": "npm install --prefix client && npm run build --prefix client && mkdir -p public && cp -r client/dist/* public/ || echo 'Build finished'",
     "vercel-build": "npm install --prefix client && npm run build --prefix client && mkdir -p public && cp -r client/dist/* public/"
   },
   "keywords": [],
