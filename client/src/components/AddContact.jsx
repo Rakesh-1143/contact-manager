@@ -18,7 +18,7 @@ const validationSchema = yup.object().shape({
     .string()
     .required("Email is required")
     .email("Email must be a valid email address"),
-  state: yup.string().required("State is required"),
+  country: yup.string().required("Country is required"),
 });
 
 function AddContact() {
@@ -29,7 +29,7 @@ function AddContact() {
       name: "",
       contact: "",
       email: "",
-      state: "",
+      country: "",
     },
     validationSchema,
     onSubmit: async (values) => {
@@ -124,24 +124,24 @@ function AddContact() {
         </div>
 
         <div className="mb-4">
-          <label className="form-label fs-5 text-white" htmlFor="state">
-            State
+          <label className="form-label fs-5 text-white" htmlFor="country">
+            Country
           </label>
           <select
-            name="state"
-            id="state"
-            value={formik.values.state}
+            name="country"
+            id="country"
+            value={formik.values.country}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className={`form-select ${
-              formik.touched.state && formik.errors.state
+              formik.touched.country && formik.errors.country
                 ? "is-invalid"
-                : formik.touched.state
+                : formik.touched.country
                   ? "is-valid"
                   : ""
             }`}
           >
-            <option value="">Choose your state</option>
+            <option value="">Choose your country</option>
             <option value="India">India</option>
             <option value="United State">United States</option>
             <option value="Canada">Canada</option>
@@ -150,9 +150,9 @@ function AddContact() {
             <option value="Japan">Japan</option>
             <option value="Thailand">Thailand</option>
           </select>
-          {formik.touched.state && formik.errors.state && (
+          {formik.touched.country && formik.errors.country && (
             <div className="invalid-feedback d-block">
-              {formik.errors.state}
+              {formik.errors.country}
             </div>
           )}
         </div>

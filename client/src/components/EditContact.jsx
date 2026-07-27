@@ -9,7 +9,7 @@ function EditContact() {
     name: "",
     contact: "",
     email: "",
-    state: "",
+    country: "",
   });
   useEffect(() => {
     async function fetchContact() {
@@ -39,7 +39,7 @@ function EditContact() {
       name: "",
       contact: "",
       email: "",
-      state: "",
+      country: "",
     });
     navigate("/contactlist");
   }
@@ -96,17 +96,17 @@ function EditContact() {
           />
         </div>
         <div className="mb-4">
-          <label className="form-label fs-5 text-white" htmlFor="state">
-            state
+          <label className="form-label fs-5 text-white" htmlFor="country">
+            Country
           </label>
           <select
-            name="state"
-            id="state"
-            value={obj.state}
+            name="country"
+            id="country"
+            value={obj.country}
             onChange={handleChange}
             className="form-select"
           >
-            <option value="">Choose your state</option>
+            <option value="">Choose your country</option>
             <option value="India">India</option>
             <option value="United States">United States</option>
             <option value="Canada">Canada</option>

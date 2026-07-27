@@ -43,8 +43,8 @@ function ViewContact() {
               </div>
 
               <div>
-                <small className="text-muted">State</small>
-                <div className="fw-semibold fs-6">{data.state}</div>
+                <small className="text-muted">Country</small>
+                <div className="fw-semibold fs-6">{data.country}</div>
               </div>
             </div>
 
