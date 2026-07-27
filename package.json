@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "json-server --watch db.json --port 5000"
+    "dev": "json-server --watch db.json --port 5000",
+    "vercel-build": "npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
