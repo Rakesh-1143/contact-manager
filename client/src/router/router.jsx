@@ -9,44 +9,49 @@ const ViewContact = lazy(() => import("../components/ViewContact"));
 const DeleteContact = lazy(() => import("../components/DeleteContact"));
 const EditContact = lazy(() => import("../components/EditContact"));
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Navbar />,
+      errorElement: <Error />,
+      children: [
+        { index: true, element: <Navigate to="contactlist" replace /> },
+        { path: "contactlist", element: <Contacts /> },
+        { path: "addcontact", element: <AddContact /> },
+
+        {
+          path: "view/:id",
+          element: (
+            <Suspense fallback={<div>Loading contact...</div>}>
+              <ViewContact />
+            </Suspense>
+          ),
+        },
+
+        {
+          path: "delete/:id",
+          element: (
+            <Suspense fallback={<div>Deleting...</div>}>
+              <DeleteContact />
+            </Suspense>
+          ),
+        },
+
+        {
+          path: "edit/:id",
+          element: (
+            <Suspense fallback={<div>Loading editor...</div>}>
+              <EditContact />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Navbar />,
-    errorElement: <Error />,
-    children: [
-      { index: true, element: <Navigate to="contactlist" replace /> },
-      { path: "contactlist", element: <Contacts /> },
-      { path: "addcontact", element: <AddContact /> },
-
-      {
-        path: "view/:id",
-        element: (
-          <Suspense fallback={<div>Loading contact...</div>}>
-            <ViewContact />
-          </Suspense>
-        ),
-      },
-
-      {
-        path: "delete/:id",
-        element: (
-          <Suspense fallback={<div>Deleting...</div>}>
-            <DeleteContact />
-          </Suspense>
-        ),
-      },
-
-      {
-        path: "edit/:id",
-        element: (
-          <Suspense fallback={<div>Loading editor...</div>}>
-            <EditContact />
-          </Suspense>
-        ),
-      },
-    ],
-  },
-]);
+    basename: import.meta.env.BASE_URL,
+  }
+);
 
 export default router;
